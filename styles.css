@@ -1,0 +1,234 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    color: #0d3b66;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.controls-bar {
+    background: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    margin-bottom: 15px;
+}
+
+.controls-bar input {
+    width: 60px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.btn-action {
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    padding: 7px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-action:hover {
+    background-color: #0b5ed7;
+}
+
+/* Contenedor principal de la pecera */
+#contenedorPecera {
+    position: relative;
+    display: inline-block;
+    margin-top: 5px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    border: 4px solid #ffffff;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* PREGUNTA 1: Tablero creado por crearPecera(x) */
+.tablero-pecera {
+    display: grid;
+    gap: 2px;
+    background-color: #e2eef3;
+}
+
+.celda-pecera {
+    width: 90px;
+    height: 90px;
+    background-color: rgb(173, 216, 230); /* Azul claro inicial */
+    transition: background-color 0.9s linear;
+    box-sizing: border-box;
+}
+
+/* PREGUNTA 3: Zona superior de donde emergen las burbujas cada 2 segundos */
+#zonaBurbujas {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    right: 10px;
+    min-height: 75px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+    z-index: 20;
+    pointer-events: none;
+}
+
+.burbuja {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: grab;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    box-shadow: inset -4px -4px 8px rgba(0, 0, 0, 0.25), 0 3px 6px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    user-select: none;
+    animation: flotar 2s infinite ease-in-out alternate;
+}
+
+.burbuja:active {
+    cursor: grabbing;
+}
+
+.burbuja-nemo {
+    background: radial-gradient(circle at 30% 30%, #ffb703, #fb8500, #e85d04);
+}
+
+.burbuja-dory {
+    background: radial-gradient(circle at 30% 30%, #48cae4, #0077b6, #023e8a);
+}
+
+@keyframes flotar {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(6px);
+    }
+}
+
+/* PREGUNTA 2 y 3: Areas de Nemo y Dory dentro de la pecera */
+#capaPeces {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    gap: 15px;
+    z-index: 10;
+}
+
+.zona-pez {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(3px);
+    border: 3px dashed transparent;
+    border-radius: 14px;
+    padding: 12px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s, border-color 0.2s, background-color 0.2s;
+}
+
+.zona-pez.drag-over-nemo {
+    border-color: #fb8500;
+    background: rgba(255, 235, 205, 0.92);
+    transform: scale(1.03);
+}
+
+.zona-pez.drag-over-dory {
+    border-color: #0077b6;
+    background: rgba(224, 247, 250, 0.92);
+    transform: scale(1.03);
+}
+
+.nombre-pez {
+    font-weight: 800;
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+
+.memoria-tag {
+    font-size: 11px;
+    color: #666;
+    margin-bottom: 6px;
+}
+
+.contador-box {
+    font-size: 26px;
+    font-weight: 900;
+    margin: 4px 0 8px 0;
+    padding: 2px 16px;
+    border-radius: 20px;
+    color: white;
+}
+
+.contador-nemo {
+    background-color: #fb8500;
+}
+
+.contador-dory {
+    background-color: #0077b6;
+}
+
+.btn-aleta {
+    border: none;
+    padding: 7px 14px;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 13px;
+    margin-top: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.btn-aleta-nemo {
+    background-color: #e85d04;
+}
+
+.btn-aleta-nemo:hover {
+    background-color: #d00000;
+}
+
+.btn-aleta-dory {
+    background-color: #023e8a;
+}
+
+.btn-aleta-dory:hover {
+    background-color: #03045e;
+}
+
+.svg-pez {
+    width: 105px;
+    height: 75px;
+}

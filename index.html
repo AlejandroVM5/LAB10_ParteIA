@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Actividad Previa Lab 10 - APIs Nativas de JavaScript (Nemo y Dory)</title>
+    <!-- Archivo CSS externo -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h2>Stf-Acuario: Nemo y Dory (APIs Nativas de JavaScript)</h2>
+    <div class="subtitle">
+        1. <b>DOM API:</b> <code>crearPecera(x)</code> &nbsp;|&nbsp;
+        2. <b>Web Storage API:</b> Nemo (<code>localStorage</code>) vs Dory (<code>sessionStorage</code>) &nbsp;|&nbsp;
+        3. <b>Drag &amp; Drop API:</b> Burbujas flotantes cada 2s
+    </div>
+
+    <div class="controls-bar">
+        <label for="inputDim"><b>Dimensiones (x):</b></label>
+        <input type="number" id="inputDim" value="6" min="5" max="10">
+        <button class="btn-action" onclick="crearPecera(parseInt(document.getElementById('inputDim').value))">
+            Redimensionar Pecera
+        </button>
+        <button class="btn-action" style="background-color: #198754;" onclick="location.reload()">
+            Limpiar Pecera (Recargar Pestaña)
+        </button>
+    </div>
+
+    <br>
+
+    <!-- Contenedor donde crearPecera(x) inserta el tablero y habitan Nemo, Dory y las burbujas -->
+    <div id="contenedorPecera"></div>
+
+    <!-- Archivo JavaScript externo -->
+    <script src="script.js"></script>
+</body>
+</html>
